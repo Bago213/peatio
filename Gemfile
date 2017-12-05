@@ -6,6 +6,7 @@ gem 'rails-i18n'
 gem 'mysql2'
 gem 'daemons-rails'
 gem 'redis-rails'
+gem 'state_machines'
 
 gem 'rotp'
 gem 'json'
