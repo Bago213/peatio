@@ -7,7 +7,7 @@
   type: WithdrawChannelSatoshi
 - id: 400
   key: bank
-  currency: cny
+  currency: eur
   fixed: 2
   fee_max: 0
   min: 100
@@ -16,3 +16,33 @@
   proportion: true
   inuse: true
   type: WithdrawChannelBank
+- id: 500
+  key: ether
+  currency: eth
+  min_confirm: 1
+  max_confirm: 6
+  inuse: true
+  fixed: 8
+  fee: 0.0005
+  type: WithdrawChannelEthereum
+- id: 700
+  key: materiacoin
+  currency: mtr
+  fixed: 8
+  fee: 0.0005
+  inuse: true
+  type: WithdrawChannelMateriacoin  
+- id: 600
+  key: berycoin
+  currency: brc
+  fixed: 8
+  fee: 0.0005
+  inuse: true
+  type: WithdrawChannelBerycoin
+- id: 800
+  key: litecoin
+  currency: ltc
+  fixed: 8
+  fee: 0.0005
+  inuse: true
+  type: WithdrawChannelLitecoin

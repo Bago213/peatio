@@ -1,0 +1,30 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @berycoin.id)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @berycoin, :id
+          = item_for @berycoin, :created_at
+          = item_for @berycoin, :aasm_state_text
+          hr.split
+          = item_for @berycoin.member, :name
+          = item_for @berycoin, :fund_extra
+          = item_for @berycoin, :fund_uid do
+            span = @berycoin.fund_uid.truncate(22)
+          = item_for @berycoin, :amount
+          hr.split
+          = item_for @berycoin, :remark
+          hr.split
+          ul.list-inline.pull-right
+            - if @berycoin.may_reject?
+              li
+                = link_to t('.reject'), url_for([:admin, @berycoin]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+            - if @berycoin.may_process?
+              li
+                = link_to t('.process'), url_for([:admin, @berycoin]), class: 'btn btn-primary', method: 'PATCH'
+
+  .col-xs-12
+    = render partial: 'shared/admin/member', locals: {member: @berycoin.member}
+    = render partial: 'shared/admin/account', locals: {account: @berycoin.account}

@@ -6,7 +6,7 @@
   max_confirm: 3
 - id: 400
   key: bank
-  currency: cny
+  currency: eur
   sort_order: 2
   bank_accounts:
     -
@@ -14,3 +14,26 @@
       branch: 'Your Bank Branch'
       holder: 'Your Account Holder'
       account: 'Your Account Number'
+- id: 600
+  key: ether
+  currency: eth
+  min_confirm: 1
+  max_confirm: 6
+- id: 700
+  key: materiacoin
+  currency: mtr
+  sort_order: 1
+  min_confirm: 1
+  max_confirm: 3
+- id: 800
+  key: berycoin
+  currency: brc
+  sort_order: 1
+  min_confirm: 1
+  max_confirm: 3
+- id: 900
+  key: litecoin
+  currency: ltc
+  sort_order: 1
+  min_confirm: 1
+  max_confirm: 3
