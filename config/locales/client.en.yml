@@ -42,6 +42,9 @@ en:
       currency_name:
         cny: CNY
         btc: BTC
+        ltc: LTC
+        mtr: MTR
+        brc: BRC
       deposit_cny:
         title: Chinese Yuan Deposit
         desc: "To deposit via Bank transfer, please follow these steps:"
@@ -65,6 +68,12 @@ en:
 
       deposit_btc:
         title: BTC Deposit
+      deposit_ltc:
+        title: LTC Deposit
+      deposit_mtr:
+        title: MTR Deposit
+      deposit_brc:
+        title: BRC Deposit
 
       deposit_coin:
         address: Address
@@ -114,6 +123,12 @@ en:
 
       withdraw_btc:
         title: BTC Withdraw
+      withdraw_ltc:
+        title: LTC Withdraw
+      withdraw_mtr:
+        title: MTR Withdraw
+      withdraw_brc:
+        title: BRC Withdraw
 
       withdraw_coin:
         intro: Please fill in the address and amount, then submit the form. It will be confirmed in 10 minutes
@@ -169,4 +184,7 @@ en:
         all: All Market
         cny: CNY Market
         btc: BTC Market
+        ltc: LTC Market
+        mtr: MTR Market
+        brc: BRC Market
 

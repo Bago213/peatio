@@ -20,4 +20,5 @@ class Withdraw extends PeatioModel.Model
       when 'btc' then 'satoshis'
       when 'mtr' then 'materiacoins'
       when 'brc' then 'berycoins'
+      when 'ltc' then 'litecoins'
 window.Withdraw = Withdraw

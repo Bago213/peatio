@@ -20,12 +20,14 @@ module Admin
       can :manage, ::Deposits::Satoshi
       can :manage, ::Deposits::Materiacoin
       can :manage, ::Deposits::Berycoin
+      can :manage, ::Deposits::Litecoin
 
       can :menu, Withdraw
       can :manage, ::Withdraws::Bank
       can :manage, ::Withdraws::Satoshi
       can :manage, ::Withdraws::Materiacoin
       can :manage, ::Withdraws::Berycoin
+      can :manage, ::Withdraws::Litecoin
     end
   end
 end

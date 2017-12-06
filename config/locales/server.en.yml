@@ -21,6 +21,9 @@ en:
       deposits/bank: Deposit Bank
       withdraws/bank: Withdraw Bank
       withdraws/satoshi: Withdraw
+      withdraws/litecoin: Withdraw
+      withdraws/materiacoin: Withdraw
+      withdraws/berycoin: Withdraw
     attributes:
       api_token:
         access_key: Access Key
@@ -174,7 +177,67 @@ en:
         amount: Amount
         confirmations: Confirmation
         aasm_state_text: State
+      deposits/litecoin:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      deposits/materiacoin:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      deposits/berycoin:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
       withdraws/satoshi:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/litecoin:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/materiacoin:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/berycoin:
         id: ID
         member_name: Account
         currency_obj_key_text: Currency
@@ -235,6 +298,12 @@ en:
             address:
               satoshi_ismine: Used Address
               satoshi_invalid: Invalid Address
+              litecoin_ismine: Used Address
+              litecoin_invalid: Invalid Address
+              materiacoin_ismine: Used Address
+              materiacoin_invalid: Invalid Address
+              berycoin_ismine: Used Address
+              berycoin_invalid: Invalid Address
         withdraw:
           account_balance_is_poor: Account balance is insufficient
           attributes:
@@ -244,6 +313,24 @@ en:
               poor: insufficient
               bank_min: Less 5000.00
         withdraws/satoshi:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/litecoin:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/materiacoin:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/berycoin:
           attributes:
             fund_uid:
               blank: Please enter your withdrawal address
@@ -296,11 +383,28 @@ en:
       doge: DOGE
       pts: PTS
       ltc: LTC
+      mtr: MTR
+      brc: BRC
   currency:
     satoshi:
       key: BTC
       code: BTC
       name: Bitcoin
+      format: '0,0.0000'
+    litecoin:
+      key: LTC
+      code: LTC
+      name: litecoin
+      format: '0,0.0000'
+    materiacoin:
+      key: MTR
+      code: MTR
+      name: Materiacoin
+      format: '0,0.0000'
+    berycoin:
+      key: BRC
+      code: BRC
+      name: Berycoin
       format: '0,0.0000'
     bitsharesx:
       key: BTS
@@ -467,6 +571,27 @@ en:
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
+    litecoin:
+      key: Litecoin Chain
+      title: Litecoin Deposits
+      intro: Deposit Litecoin from your own wallet address to Peatio account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    materiacoin:
+      key: Materiacoin Chain
+      title: Materiacoin Deposits
+      intro: Deposit Materiacoin from your own wallet address to Peatio account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    berycoin:
+      key: Berycoin Chain
+      title: Berycoin Deposits
+      intro: Deposit Berycoin from your own wallet address to Peatio account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
   deposits/bank:
     aasm_state:
       submitting: Submitting
@@ -479,6 +604,15 @@ en:
   private:
     deposits:
       satoshis:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      litecoins:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      materias:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      berycoins:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
       banks:
@@ -599,6 +733,51 @@ en:
         create:
           notice: Withdrawal request successfully submitted. Use the info below to
             complete the bank transfer.
+      litecoins:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      materiacoins:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      berycoins:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
     tickets:
       index:
         new_ticket: New Ticket
@@ -669,11 +848,20 @@ en:
       index:
         liability-proof: Proof of Liabilities
         btc-assets: BTC Assets
+        ltc-assets: LTC Assets
+        mtr-assets: MTR Assets
+        brc-assets: BRC Assets
         cny-assets: CNY Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
+        verify-ltc: Verify My LTC Assets
+        verify-mtr: Verify My MTR Assets
+        verify-brc: Verify My BRC Assets
         verify-cny: Verify My CNY Assets
         btc-assets-total: 'Total BTC assets of exchange: '
+        ltc-assets-total: 'Total LTC assets of exchange: '
+        mtr-assets-total: 'Total MTR assets of exchange: '
+        brc-assets-total: 'Total BRC assets of exchange: '
         cny-assets-total: 'Total CNY assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
@@ -696,6 +884,21 @@ en:
         intro: All of exchange's BTC assets are listed here.
         total: Total BTC Assets
         address: Address
+      ltc_assets:
+        title: LTC Assets
+        intro: All of exchange's LTC assets are listed here.
+        total: Total LTC Assets
+        address: Address
+      mtr_assets:
+        title: MTR Assets
+        intro: All of exchange's MTR assets are listed here.
+        total: Total MTR Assets
+        address: Address
+      brc_assets:
+        title: BRC Assets
+        intro: All of exchange's BRC assets are listed here.
+        total: Total BRC Assets
+        address: Address
       cny_assets:
         title: CNY Assets
         intro: All of exchange's CNY assets are listed here.
@@ -710,6 +913,9 @@ en:
         account_history: Account History
         cny_format: '0.00'
         btc_format: '0.00000000'
+        ltc_format: '0.00000000'
+        mtr_format: '0.00000000'
+        brc_format: '0.00000000'
         reason:
           cny:
             strike_add: Plus
@@ -718,6 +924,24 @@ en:
             withdraw: Withdraw
             fix: Fix
           btc:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          ltc:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          mtr:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          brc:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -766,6 +990,9 @@ en:
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
         cny_html: "<i class='fa fa-check'></i><span>CNY Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
+        ltc_html: "<i class='fa fa-check'></i><span>LTC Markets</span>"
+        mtr_html: "<i class='fa fa-check'></i><span>MTR Markets</span>"
+        brc_html: "<i class='fa fa-check'></i><span>BRC Markets</span>"
         price: Price
         change: "24h %"
       range_switch:
@@ -957,6 +1184,9 @@ en:
         title: "%{icon} %{c} Account"
         cny_format: '0.00'
         btc_format: '0.00000000'
+        ltc_format: '0.00000000'
+        mtr_format: '0.00000000'
+        brc_format: '0.00000000'
         total: Total
   guides:
     private:
@@ -1063,6 +1293,15 @@ en:
         satoshi:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
+        litecoin:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        materiacoin:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        berycoin:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
     hints:
       deposit:
         bank:
@@ -1092,6 +1331,12 @@ en:
           fund_extra: If your bank is no longer in the list, please contact customer
             service
         satoshi:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        litecoin:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        materiacoin:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        berycoin:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
     creating: Creating...
     updating: Updating...
@@ -1142,6 +1387,27 @@ en:
           fund_extra: Label
           account_balance: Account Balance
           member_name: Account
+        litecoin:
+          fee: Fee
+          sum: Amount
+          fund_uid: Bitcoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+        materiacoin:
+          fee: Fee
+          sum: Amount
+          fund_uid: Bitcoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+        berycoin:
+          fee: Fee
+          sum: Amount
+          fund_uid: Bitcoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
   admin:
     deposits:
       banks:
@@ -1158,6 +1424,24 @@ en:
         update:
           blank_txid: TxID can't be blank
       satoshis:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      litecoins:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      materiacoins:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      berycoins:
         update:
           notice: The deposit was successful.
         index:
@@ -1248,7 +1532,61 @@ en:
           succeed_confirm: Process withdrawal?
           reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
+      litecoins:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+      materiacoins:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+      berycoins:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
   deposits/satoshi:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/litecoins:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/materiacoins:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/berycoins:
     aasm_state:
       submitted: Submitted
       accepted: Accepted
@@ -1319,6 +1657,30 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
+    litecoin:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
+    materiacoin:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
+    berycoin:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
     bank:
       sn: SN
       amount: Amount
@@ -1350,6 +1712,9 @@ en:
     currency:
       cny: CNY
       btc: BTC
+      ltc: LTC
+      mtr: MTR
+      brc: BRC
     order:
       state:
         done: DONE
@@ -1377,6 +1742,9 @@ en:
     fund_source:
       category:
         satoshi: Bitcoin
+        litecoin: Litecoin
+        materiacoin: Materiacoin
+        berycoin: Berycoin
         bank: Bank
     id_document:
       id_document_type:
@@ -1845,6 +2213,27 @@ en:
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
+    litecoin:
+      key: LitecoinBlockchain
+      title: Litecoin Blockchain
+      intro: Withdraw Litecoin to your own Litecoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    materiacoin:
+      key: MateriacoinBlockchain
+      title: Materiacoin Blockchain
+      intro: Withdraw Materiacoin to your own Materiacoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    berycoin:
+      key: BercoinBlockchain
+      title: Berycoin Blockchain
+      intro: Withdraw Berycoin to your own Berycoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
   withdraws/bank:
@@ -1860,6 +2249,42 @@ en:
       canceled: Canceld
       failed: Failed
   withdraws/satoshi:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/litecoin:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/materiacoin:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/berycoin:
     aasm_state:
       submitting: Submitting
       submitted: Submitted
